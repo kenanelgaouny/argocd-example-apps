@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: { template "helm-guestbook.fullname" . }}-rollout
+  name: {{ template "helm-guestbook.fullname" . }}-rollout
   labels:
     app: {{ template "helm-guestbook.name" . }}
     chart: {{ template "helm-guestbook.chart" . }}
