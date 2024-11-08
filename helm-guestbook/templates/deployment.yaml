@@ -32,21 +32,22 @@ spec:
         release: {{ .Release.Name }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+        - name: mockserver
+          image: mockserver/mockserver:latest
           ports:
-            - name: http
-              containerPort: {{ .Values.containerPort }}
-              protocol: TCP
+          - containerPort: 1080
           livenessProbe:
             httpGet:
-              path: /
-              port: http
+              path: /status
+              port: 1080
+            initialDelaySeconds: 5
+            periodSeconds: 10
           readinessProbe:
             httpGet:
-              path: /
-              port: http
+              path: /status
+              port: 1080
+            initialDelaySeconds: 5
+            periodSeconds: 10
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
