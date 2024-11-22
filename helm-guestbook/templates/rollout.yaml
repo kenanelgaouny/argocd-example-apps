@@ -1,5 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
+metadata:
+  name: helm-guestbook
+  namespace: default
 spec:
   workloadRef:
     apiVersion: apps/v1
@@ -17,3 +20,4 @@ spec:
       - pause: {duration: 10}
       - setWeight: 80
       - pause: {duration: 10}
+  
