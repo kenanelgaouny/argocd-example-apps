@@ -37,6 +37,8 @@ spec:
           env:
             - name: "MOCKSERVER_LIVENESS_HTTP_GET_PATH"
               value: "/status"
+            - name: "test"
+              value: "test"
           ports:
           - containerPort: 1080
           livenessProbe:
