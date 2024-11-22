@@ -4,6 +4,7 @@ metadata:
   name: helm-guestbook
   namespace: default
 spec:
+  replicas: {{ .Values.replicaCount }}
   workloadRef:
     apiVersion: apps/v1
     kind: Deployment
